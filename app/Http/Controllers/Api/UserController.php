@@ -36,19 +36,22 @@ class UserController extends Controller
   public function updatePassword(ChangePasswordRequest $request)
   {
     try {
-      $user = User::where('reset_token', $request->token)->first();
+      $user = $request->user();
 
-      if (!$user) {
-          return response()->json(['error' => 'Invalid token'], 404);
-      }
-  
-      if (Hash::check($request->old_password, $user->password)) {
-          $user->password = Hash::make($request->new_password);
-          $user->save();
-  
-          return response()->json(['message' => 'Password updated successfully'], 200);
+      if ($user) {
+        if (Hash::check($request->old_password, $user->password)) {
+          if ($request->new_password == $request->new_password_confirmation) {
+            $user->password = Hash::make($request->new_password);
+            $user->save();
+            return response()->json(['message' => 'Password changed successfully'], 200);
+          } else {
+            return response()->json(['error' => 'New password and confirmation do not match'], 400);
+          }
+        } else {
+          return response()->json(['error' => 'Invalid old password'], 400);
+        }
       } else {
-          return response()->json(['error' => 'Invalid old password'], 422);
+        return response()->json(['error' => 'Unauthorized'], 401);
       }
     } catch (\Throwable $th) {
       return response($th->getMessage());
