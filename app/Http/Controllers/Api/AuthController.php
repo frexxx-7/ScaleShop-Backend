@@ -43,7 +43,6 @@ class AuthController extends Controller
     } catch (\Throwable $th) {
       return response($th->getMessage());
     }
-
   }
 
   public function logout(Request $request)
