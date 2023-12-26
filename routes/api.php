@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Api\AdminController;
 use App\Http\Controllers\Api\AuthController;
+use App\Http\Controllers\Api\ScaleController;
 use App\Http\Controllers\Api\UserController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -25,6 +26,9 @@ Route::middleware('auth:sanctum')->group(function () {
   Route::get('/adminInfo', [AdminController::class, 'adminInfo']);
   Route::post('/updatePassword', [UserController::class, 'updatePassword']);
 });
+
+Route::post('/addScale', [ScaleController::class, 'addScale']);
+Route::post('/editScale/{id}', [ScaleController::class, 'editScale']);
 
 Route::get('/loadInfoUser/{id}', [UserController::class, 'loadInfoUser']);
 Route::post('/editProfile/{id}', [UserController::class, 'editUser']);
