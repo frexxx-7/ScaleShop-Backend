@@ -5,7 +5,7 @@ namespace App\Http\Requests;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Validation\Rules\Password;
 
-class ScaleRequest extends FormRequest
+class CategoryScaleRequest extends FormRequest
 {
     /**
      * Get the validation rules that apply to the request.
@@ -15,12 +15,7 @@ class ScaleRequest extends FormRequest
     public function rules(): array
     {
         return [
-          'title' => ['required', 'string', 'max:191'],
-          'content' => ['required', 'string'],
-          'image' => ['nullable','string'],
-          'price' => ['integer'],
-          'count' => ['integer'],
-          'idCategoryScale' => ['integer', 'nullable']
+          'name'=>["string", 'required']
         ];
     }
 }

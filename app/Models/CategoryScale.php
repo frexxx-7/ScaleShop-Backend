@@ -8,4 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class CategoryScale extends Model
 {
     use HasFactory;
+    protected $fillable = [
+      'name'
+  ];
 }

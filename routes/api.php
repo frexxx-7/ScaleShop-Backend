@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Api\AdminController;
 use App\Http\Controllers\Api\AuthController;
+use App\Http\Controllers\Api\CategoryScaleController;
 use App\Http\Controllers\Api\ScaleController;
 use App\Http\Controllers\Api\UserController;
 use Illuminate\Http\Request;
@@ -29,6 +30,9 @@ Route::middleware('auth:sanctum')->group(function () {
 
 Route::post('/addScale', [ScaleController::class, 'addScale']);
 Route::post('/editScale/{id}', [ScaleController::class, 'editScale']);
+
+Route::post('/addCategoryScale', [CategoryScaleController::class, 'addCategoryScale']);
+Route::get('/categoryScaleInfo', [CategoryScaleController::class, 'categoryScaleInfo']);
 
 Route::get('/loadInfoUser/{id}', [UserController::class, 'loadInfoUser']);
 Route::post('/editProfile/{id}', [UserController::class, 'editUser']);

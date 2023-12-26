@@ -14,5 +14,6 @@ class Scale extends Model
       'price',
       'count',
       'image',
+      'idCategoryScale'
   ];
 }

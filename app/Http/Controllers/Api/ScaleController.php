@@ -18,11 +18,12 @@ class ScaleController extends Controller
         'image' => $data['image'],
         'price' => $data['price'],
         'count' => $data['count'],
+        'idCategoryScale' => $data['idCategoryScale'],
       ]);
     } catch (\Throwable $th) {
       return response($th->getMessage());
     }
-    return response(compact("news"));
+    return response(compact("scale"));
   }
   public function editScale(ScaleRequest $request, string $id)
   {
@@ -35,6 +36,7 @@ class ScaleController extends Controller
         'image' => $data['image'],
         'price' => $data['price'],
         'count' => $data['count'],
+        'idCategoryScale' => $data['idCategoryScale'],
       ]);
     } catch (\Throwable $th) {
       return response($th->getMessage());
