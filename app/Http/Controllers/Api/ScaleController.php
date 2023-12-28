@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Api;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\ScaleRequest;
 use App\Models\Scale;
+use Request;
 
 class ScaleController extends Controller
 {
@@ -41,7 +42,27 @@ class ScaleController extends Controller
     } catch (\Throwable $th) {
       return response($th->getMessage());
     }
-    return response(compact("news"));
+    return response(compact("scale"));
   }
 
+  public function loadLastScale(){
+    try {
+      $scale = Scale::latest('created_at')->limit(5)->get();
+    } catch (\Throwable $th) {
+      return response($th->getMessage());
+    }
+    return response(compact("scale"));
+  }
+  public function oneScale(Request $request, string $id)
+    {
+        try {
+            $scale = Scale::all()->where("id", $id)->first();
+
+            if (!$scale)
+                return response("Scale not found", 404);
+        } catch (\Throwable $th) {
+            return response($th->getMessage());
+        }
+        return response(compact("scale"));
+    }
 }

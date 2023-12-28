@@ -30,6 +30,8 @@ Route::middleware('auth:sanctum')->group(function () {
 
 Route::post('/addScale', [ScaleController::class, 'addScale']);
 Route::post('/editScale/{id}', [ScaleController::class, 'editScale']);
+Route::get('/loadLastScale', [ScaleController::class, 'loadLastScale']);
+Route::get('/scale/{id}', [ScaleController::class, 'oneScale']);
 
 Route::post('/addCategoryScale', [CategoryScaleController::class, 'addCategoryScale']);
 Route::get('/categoryScaleInfo', [CategoryScaleController::class, 'categoryScaleInfo']);
