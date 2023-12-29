@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\ScaleRequest;
+use App\Models\CategoryScale;
 use App\Models\Scale;
 use Request;
 
@@ -57,12 +58,12 @@ class ScaleController extends Controller
     {
         try {
             $scale = Scale::all()->where("id", $id)->first();
-
+            $categoryName = CategoryScale::where("id", $scale->idCategoryScale)->get()[0]->name;
             if (!$scale)
                 return response("Scale not found", 404);
         } catch (\Throwable $th) {
             return response($th->getMessage());
         }
-        return response(compact("scale"));
+        return response(compact("scale", "categoryName"));
     }
 }
