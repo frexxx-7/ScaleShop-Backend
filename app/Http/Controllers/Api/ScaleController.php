@@ -93,4 +93,13 @@ class ScaleController extends Controller
       return response($th->getMessage());
     }
   }
+  public function searchScale(string $id)
+  {
+    try {
+      $scale = Scale::whereRaw("concat(title, content) LIKE ?", ['%' . $id . '%'])->get();
+      return response(compact("scale"));
+    } catch (\Throwable $th) {
+      return response($th->getMessage());
+    }
+  }
 }

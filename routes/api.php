@@ -34,6 +34,7 @@ Route::get('/loadLastScale', [ScaleController::class, 'loadLastScale']);
 Route::get('/scale/{id}', [ScaleController::class, 'oneScale']);
 Route::get('/categoryAndScale', [ScaleController::class, 'loadCategoryAndScale']);
 Route::get('/allScaleInCategory/{id}', [ScaleController::class, 'loadAllScaleInCategory']);
+Route::get('/searchScale/{id}', [ScaleController::class, 'searchScale']);
 
 Route::post('/addCategoryScale', [CategoryScaleController::class, 'addCategoryScale']);
 Route::get('/categoryScaleInfo', [CategoryScaleController::class, 'categoryScaleInfo']);
