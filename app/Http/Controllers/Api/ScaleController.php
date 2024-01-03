@@ -83,4 +83,14 @@ class ScaleController extends Controller
       return response($th->getMessage());
     }
   }
+
+  public function loadAllScaleInCategory(string $id)
+  {
+    try {
+      $scales = Scale::where('idCategoryScale', $id)->get();
+      return response(compact("scales"));
+    } catch (\Throwable $th) {
+      return response($th->getMessage());
+    }
+  }
 }

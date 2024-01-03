@@ -13,7 +13,8 @@ class CategoryScaleController extends Controller
     try {
       $data = $request->all();
       $category_scale = CategoryScale::create([
-        'name'=>$data["name"]
+        'name' => $data["name"],
+        'image' => $data["image"]
       ]);
     } catch (\Throwable $th) {
       return response($th->getMessage());
