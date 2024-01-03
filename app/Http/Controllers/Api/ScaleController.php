@@ -46,7 +46,8 @@ class ScaleController extends Controller
     return response(compact("scale"));
   }
 
-  public function loadLastScale(){
+  public function loadLastScale()
+  {
     try {
       $scale = Scale::latest('created_at')->limit(5)->get();
     } catch (\Throwable $th) {
@@ -55,15 +56,31 @@ class ScaleController extends Controller
     return response(compact("scale"));
   }
   public function oneScale(Request $request, string $id)
-    {
-        try {
-            $scale = Scale::all()->where("id", $id)->first();
-            $categoryName = CategoryScale::where("id", $scale->idCategoryScale)->get()[0]->name;
-            if (!$scale)
-                return response("Scale not found", 404);
-        } catch (\Throwable $th) {
-            return response($th->getMessage());
-        }
+  {
+    try {
+      $scale = Scale::all()->where("id", $id)->first();
+      if (!CategoryScale::where("id", $scale->idCategoryScale)->get()->isEmpty()) {
+        $categoryName = CategoryScale::where("id", $scale->idCategoryScale)->get()[0]->name;
         return response(compact("scale", "categoryName"));
+      }
+      if (!$scale)
+        return response("Scale not found", 404);
+      return response(compact("scales"));
+    } catch (\Throwable $th) {
+      return response($th->getMessage());
     }
+  }
+  public function loadCategoryAndScale()
+  {
+    try {
+      $categories = CategoryScale::with([
+        'scales' => function ($query) {
+          $query->orderBy('created_at', 'desc')->take(5);
+        }
+      ])->get();
+      return response(compact("categories"));
+    } catch (\Throwable $th) {
+      return response($th->getMessage());
+    }
+  }
 }

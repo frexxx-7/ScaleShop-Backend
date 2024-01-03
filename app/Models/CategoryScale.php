@@ -7,8 +7,13 @@ use Illuminate\Database\Eloquent\Model;
 
 class CategoryScale extends Model
 {
-    use HasFactory;
-    protected $fillable = [
-      'name'
+  use HasFactory;
+  protected $fillable = [
+    'name'
   ];
+
+  public function scales()
+  {
+    return $this ->hasMany(Scale::class, "idCategoryScale");
+  }
 }
