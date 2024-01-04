@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Api\AdminController;
 use App\Http\Controllers\Api\AuthController;
+use App\Http\Controllers\Api\BasketController;
 use App\Http\Controllers\Api\CategoryScaleController;
 use App\Http\Controllers\Api\ScaleController;
 use App\Http\Controllers\Api\UserController;
@@ -35,6 +36,12 @@ Route::get('/scale/{id}', [ScaleController::class, 'oneScale']);
 Route::get('/categoryAndScale', [ScaleController::class, 'loadCategoryAndScale']);
 Route::get('/allScaleInCategory/{id}', [ScaleController::class, 'loadAllScaleInCategory']);
 Route::get('/searchScale/{id}', [ScaleController::class, 'searchScale']);
+
+
+Route::post('/addScaleToBasket', [BasketController::class, 'addScaleToBasket']);
+Route::post('/editScaleToBasket/{id}', [BasketController::class, 'editScaleToBasket']);
+Route::post('/infoScaleScaleInBasket', [BasketController::class, 'infoScaleScaleInBasket']);
+
 
 Route::post('/addCategoryScale', [CategoryScaleController::class, 'addCategoryScale']);
 Route::get('/categoryScaleInfo', [CategoryScaleController::class, 'categoryScaleInfo']);
