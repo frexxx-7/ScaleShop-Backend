@@ -16,7 +16,7 @@ class BasketRequest extends FormRequest
   {
     return [
       'idUser' => ["integer", 'required'],
-      'idScale' => ["integer", "required"],
+      'idScale' => ["integer", "nullable"],
       'count' => ["integer", "nullable"],
       'purchased' => ["boolean", "nullable"],
     ];

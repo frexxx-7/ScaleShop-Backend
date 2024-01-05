@@ -41,6 +41,7 @@ Route::get('/searchScale/{id}', [ScaleController::class, 'searchScale']);
 Route::post('/addScaleToBasket', [BasketController::class, 'addScaleToBasket']);
 Route::post('/editScaleToBasket/{id}', [BasketController::class, 'editScaleToBasket']);
 Route::post('/infoScaleScaleInBasket', [BasketController::class, 'infoScaleScaleInBasket']);
+Route::post('/loadInfoBasketScales', [BasketController::class, 'loadInfoBasketScales']);
 
 
 Route::post('/addCategoryScale', [CategoryScaleController::class, 'addCategoryScale']);

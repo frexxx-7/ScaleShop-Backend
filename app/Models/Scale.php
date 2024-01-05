@@ -16,4 +16,8 @@ class Scale extends Model
       'image',
       'idCategoryScale'
   ];
+  public function basket()
+  {
+    return $this ->hasMany(Basket::class, "idScale");
+  }
 }
