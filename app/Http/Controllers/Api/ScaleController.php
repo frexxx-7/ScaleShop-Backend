@@ -105,34 +105,4 @@ class ScaleController extends Controller
     }
   }
 
-  public function addScaleToBasket(BasketRequest $request)
-  {
-    try {
-      $data = $request->all();
-      $basket = Basket::create([
-        'idUser' => $data['idUser'],
-        'idScale' => $data['idScale'],
-        'count' => $data['count'],
-        'purchased' => $data['purchased']
-      ]);
-    } catch (\Throwable $th) {
-      return response($th->getMessage());
-    }
-    return response(compact("$basket"));
-  }
-  public function editScaleToBasket(BasketRequest $request, string $id)
-  {
-    try {
-      $data = $request->all();
-      $basket = Basket::where('id', $id)->update([
-        'idUser' => $data['idUser'],
-        'idScale' => $data['idScale'],
-        'count' => $data['count'],
-        'purchased' => $data['purchased']
-      ]);
-    } catch (\Throwable $th) {
-      return response($th->getMessage());
-    }
-    return response(compact("$basket"));
-  }
 }

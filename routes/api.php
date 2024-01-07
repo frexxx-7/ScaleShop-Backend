@@ -4,6 +4,7 @@ use App\Http\Controllers\Api\AdminController;
 use App\Http\Controllers\Api\AuthController;
 use App\Http\Controllers\Api\BasketController;
 use App\Http\Controllers\Api\CategoryScaleController;
+use App\Http\Controllers\Api\ReviewController;
 use App\Http\Controllers\Api\ScaleController;
 use App\Http\Controllers\Api\UserController;
 use Illuminate\Http\Request;
@@ -52,3 +53,6 @@ Route::post('/editProfile/{id}', [UserController::class, 'editUser']);
 
 Route::post('/signup', [AuthController::class, 'signup']);
 Route::post('/signin', [AuthController::class, 'signin']);
+
+Route::post('/addReview', [ReviewController::class, 'addReview']);
+Route::get('/loadLastReview', [ReviewController::class, 'loadLastReview']);
