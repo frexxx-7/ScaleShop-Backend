@@ -17,7 +17,9 @@ class ContructorComponentRequest extends FormRequest
     return [
       'name' => ["string"],
       'size' => ["string"],
-      'price' => ["integer", "nullable"]
+      'price' => ["integer", "nullable"],
+      'magnitude' => ['integer'],
+      'idIndicator' => ['integer']
     ];
   }
 }

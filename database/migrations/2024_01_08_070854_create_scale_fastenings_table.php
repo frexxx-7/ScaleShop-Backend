@@ -15,6 +15,8 @@ return new class extends Migration
             $table->id();
             $table->string('name');
             $table->integer('price');
+            $table->bigInteger('idIndicator')->unsigned()->default(null);
+            $table->foreign('idIndicator')->references('id')->on('scale_indicators');
             $table->timestamps();
         });
     }

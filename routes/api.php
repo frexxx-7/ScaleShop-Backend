@@ -59,3 +59,16 @@ Route::post('/addReview', [ReviewController::class, 'addReview']);
 Route::get('/loadLastReview', [ReviewController::class, 'loadLastReview']);
 
 Route::post('/addPlatform', [ConstructorController::class, 'addPlatform']);
+Route::post('/addFastening', [ConstructorController::class, 'addFastening']);
+Route::post('/addIndicator', [ConstructorController::class, 'addIndicator']);
+Route::post('/addMaterial', [ConstructorController::class, 'addMaterial']);
+Route::post('/addNPV', [ConstructorController::class, 'addNPV']);
+Route::post('/addStrainGauge', [ConstructorController::class, 'addStrainGauge']);
+
+Route::get('/loadPlatformInfo', [ConstructorController::class, 'loadPlatformInfo']);
+Route::get('/loadFasteningInfo', [ConstructorController::class, 'loadFasteningInfo']);
+Route::get('/loadIndicatorInfo', [ConstructorController::class, 'loadIndicatorInfo']);
+Route::get('/loadMaterialInfo', [ConstructorController::class, 'loadMaterialInfo']);
+Route::get('/loadNPVInfo', [ConstructorController::class, 'loadNPVInfo']);
+Route::get('/loadStrainGauge', [ConstructorController::class, 'loadStrainGauge']);
+
