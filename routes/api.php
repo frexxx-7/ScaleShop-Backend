@@ -4,6 +4,7 @@ use App\Http\Controllers\Api\AdminController;
 use App\Http\Controllers\Api\AuthController;
 use App\Http\Controllers\Api\BasketController;
 use App\Http\Controllers\Api\CategoryScaleController;
+use App\Http\Controllers\Api\ConstructorController;
 use App\Http\Controllers\Api\ReviewController;
 use App\Http\Controllers\Api\ScaleController;
 use App\Http\Controllers\Api\UserController;
@@ -56,3 +57,5 @@ Route::post('/signin', [AuthController::class, 'signin']);
 
 Route::post('/addReview', [ReviewController::class, 'addReview']);
 Route::get('/loadLastReview', [ReviewController::class, 'loadLastReview']);
+
+Route::post('/addPlatform', [ConstructorController::class, 'addPlatform']);
