@@ -13,6 +13,7 @@ use App\Models\ScaleMaterial;
 use App\Models\ScaleNPV;
 use App\Models\ScalePlatform;
 use App\Models\ScaleStrainGauge;
+use Illuminate\Support\Facades\DB;
 
 class ConstructorController extends Controller
 {
@@ -161,11 +162,30 @@ class ConstructorController extends Controller
         "idMaterial" => $data["idMaterial"],
         "idIndicator" => $data["idIndicator"],
         "idStrainGuages" => $data["idStrainGuages"],
-        "idFastening" => $data["idFastening"]
+        "idFastening" => $data["idFastening"],
+        "idUser" => $data["idUser"]
       ]);
     } catch (\Throwable $th) {
       return response($th->getMessage());
     }
     return response(compact("constructorScale"));
+  }
+  public function loadInfoConstructor(string $id)
+  {
+    try {
+      $constructors =  DB::table('construcor_scales')
+      ->select('*', DB::raw('(scale_platforms.price + scale_fastenings.price + scale_indicators.price + scale_materials.price + scale_n_p_v_s.price + scale_strain_gauges.price) as sumPrice'))
+      ->join('scale_platforms', 'scale_platforms.id', '=', 'construcor_scales.idPlatforms')
+      ->join('scale_fastenings', 'scale_fastenings.id', '=', 'construcor_scales.idFastening')
+      ->join('scale_indicators', 'scale_indicators.id', '=', 'construcor_scales.idIndicator')
+      ->join('scale_materials', 'scale_materials.id', '=', 'construcor_scales.idMaterial')
+      ->join('scale_n_p_v_s', 'scale_n_p_v_s.id', '=', 'construcor_scales.idNPV')
+      ->join('scale_strain_gauges', 'scale_strain_gauges.id', '=', 'construcor_scales.idStrainGuages')
+      ->where('idUser', $id)
+      ->get();
+    } catch (\Throwable $th) {
+      return response($th->getMessage());
+    }
+    return response(compact("constructors"));
   }
 }

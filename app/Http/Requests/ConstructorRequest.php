@@ -21,6 +21,7 @@ class ConstructorRequest extends FormRequest
       'idIndicator' => ['integer', 'required'],
       'idStrainGuages' => ['integer', 'required'],
       'idFastening' => ['integer', 'required'],
+      'idUser' => ['integer', 'required'],
     ];
   }
 }

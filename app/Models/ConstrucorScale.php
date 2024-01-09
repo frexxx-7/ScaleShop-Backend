@@ -14,7 +14,8 @@ class ConstrucorScale extends Model
     "idMaterial",
     "idIndicator",
     "idStrainGuages",
-    "idFastening"
+    "idFastening",
+    "idUser"
   ];
 
 }
