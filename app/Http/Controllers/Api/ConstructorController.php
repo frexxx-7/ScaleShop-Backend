@@ -3,7 +3,9 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\ConstructorRequest;
 use App\Http\Requests\ContructorComponentRequest;
+use App\Models\ConstrucorScale;
 use App\Models\Scale;
 use App\Models\ScaleFastening;
 use App\Models\ScaleIndicator;
@@ -148,5 +150,22 @@ class ConstructorController extends Controller
       return response($th->getMessage());
     }
     return response(compact("strainGauge"));
+  }
+  public function addConstructorScale(ConstructorRequest $request)
+  {
+    try {
+      $data = $request->all();
+      $constructorScale = ConstrucorScale::create([
+        "idPlatforms" => $data["idPlatforms"],
+        "idNPV" => $data["idNPV"],
+        "idMaterial" => $data["idMaterial"],
+        "idIndicator" => $data["idIndicator"],
+        "idStrainGuages" => $data["idStrainGuages"],
+        "idFastening" => $data["idFastening"]
+      ]);
+    } catch (\Throwable $th) {
+      return response($th->getMessage());
+    }
+    return response(compact("constructorScale"));
   }
 }

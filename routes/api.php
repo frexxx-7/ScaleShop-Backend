@@ -72,3 +72,5 @@ Route::get('/loadMaterialInfo', [ConstructorController::class, 'loadMaterialInfo
 Route::get('/loadNPVInfo', [ConstructorController::class, 'loadNPVInfo']);
 Route::get('/loadStrainGauge', [ConstructorController::class, 'loadStrainGauge']);
 
+Route::post('/addConstructorScale', [ConstructorController::class, 'addConstructorScale']);
+

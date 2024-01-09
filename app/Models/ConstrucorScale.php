@@ -7,5 +7,14 @@ use Illuminate\Database\Eloquent\Model;
 
 class ConstrucorScale extends Model
 {
-    use HasFactory;
+  use HasFactory;
+  protected $fillable = [
+    "idPlatforms",
+    "idNPV",
+    "idMaterial",
+    "idIndicator",
+    "idStrainGuages",
+    "idFastening"
+  ];
+
 }
